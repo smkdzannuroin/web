@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK DZANNUROIN</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      /* Green Template Variables */
+      --line-color: transparent;
+      /* Lines HIDDEN as requested */
+      --line-width: 2px;
+
+      /* The Muted Forest Green -> Synced with Site Primary */
+      --node-bg: var(--primary-color);
+      --node-text: var(--white);
+      --node-border: var(--primary-color);
+
+      --col-gap: 40px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .page-header {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("images/profil-header-final.jpg");
+      background-size: 125%;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-color: #011607;
+      color: var(--white);
+      padding: 95px 0;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      color: var(--white);
+    }
+
+    .page-header .container {
+      margin-left: 10cm;
+      /* Shifted further to the right as requested */
+    }
+
+    /* Container */
+    .org-chart-container {
+      background: #fff;
+      padding: 60px 20px;
+      overflow-x: auto;
+      text-align: center;
+      min-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .org-chart-container {
+        min-width: auto;
+        overflow-x: hidden;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 60px 0;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .page-header .container {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .org-chart-container {
+        padding: 40px 15px;
+      }
+
+      .level-2,
+      .bus-wrapper,
+      .waka-row,
+      .level-4-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .node-box {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .chart-title-box,
+      .teacher-section-title {
+        font-size: 1.8rem;
+      }
+
+      .waka-prodi-group {
+        gap: 20px;
+      }
+
+      .separator-line {
+        margin: 40px auto 20px auto;
+      }
+    }
+
+    /* Custom Header */
+    /* Custom Header - Matching H2 Style */
+    .chart-title-box {
+      background-color: transparent;
+      color: var(--primary-dark);
+      padding: 0;
+      border-radius: 0;
+      font-size: 2.5rem;
+      /* Match H2 */
+      font-weight: 700;
+      /* Match H2 */
+      text-transform: capitalize;
+      /* "Kejuruan APHP" style */
+      margin-bottom: 40px;
+      display: block;
+      text-align: center;
+      box-shadow: none;
+      border-bottom: none;
+      position: relative;
+    }
+
+    .chart-title-box::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .chart-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Node Style - Filled Box */
+    .node-box {
+      border: 2px solid var(--node-border);
+      padding: 15px 10px;
+      background: var(--node-bg);
+      width: 220px;
+      position: relative;
+      z-index: 5;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      transition: transform 0.2s;
+    }
+
+    .node-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .node-box strong {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      letter-spacing: 0.5px;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .node-box span {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 800;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* HIDDEN LINES UTILITIES */
+    .level-1 {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 45px;
+      position: relative;
+    }
+
+    .level-1::after {
+      display: none;
+    }
+
+    .level-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+      position: relative;
+      margin-bottom: 45px;
+    }
+
+    .ks-wrapper {
+      position: relative;
+    }
+
+    .komite-connector {
+      display: none;
+    }
+
+    .ks-down-line {
+      display: none;
+    }
+
+    .level-3-container {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding-top: 25px;
+    }
+
+    .bus-wrapper {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      /* Align top */
+      gap: 40px;
+      /* Increased gap for tidiness */
+    }
+
+    .level-3-bus-line {
+      display: none;
+    }
+
+    /* Columns */
+    .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .col::before {
+      display: none;
+    }
+
+    /* Stacked Waka Nodes */
+    .waka-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .stack-line {
+      display: none;
+    }
+
+    /* Specific Group for Wakas + Prose that puts Prodi below */
+    .waka-prodi-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+      /* Vertical Gap between Wakas and Prodi */
+    }
+
+    .waka-row {
+      display: flex;
+      gap: 40px;
+    }
+
+    .spine-container {
+      display: none;
+    }
+
+    .spine-line {
+      display: none;
+    }
+
+    /* LEVEL 4 BUS */
+    /* Adjust spacing */
+    .level-4-container {
+      margin-top: 35px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      padding-top: 0;
+    }
+
+    .level-4-bus-line {
+      display: none;
+    }
+
+
+    .l4-col::before {
+      display: none;
+    }
+
+    /* Teacher Directory Styles */
+    /* Teacher Directory Styles */
+    .teacher-section-title {
+      margin-top: 60px;
+      margin-bottom: 30px;
+      background-color: transparent;
+      color: var(--primary-dark);
+      padding: 0;
+      border-radius: 0;
+      font-size: 2.5rem;
+      /* Match H2 */
+      font-weight: 700;
+      /* Match H2 */
+      text-transform: capitalize;
+      display: block;
+      text-align: center;
+      box-shadow: none;
+      border-bottom: none;
+      position: relative;
+    }
+
+    .teacher-section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+      /* Wider to fit more items */
+      margin-top: 20px;
+      justify-items: center;
+    }
+
+    .teacher-card {
+      background: var(--node-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+      border: 2px solid var(--node-border);
+      width: 100%;
+      max-width: 240px;
+      transition: transform 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .teacher-card strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 5px;
+      font-weight: 700;
+      background: transparent;
+      padding: 0;
+      order: 0;
+      border: none;
+      box-shadow: none;
+      width: auto;
+    }
+
+    .teacher-card span {
+      /* ROLE */
+      background: var(--node-bg);
+      /* Ensuring it uses var for consistency if I missed it, but sticking to existing revert logic. Wait, the revert logic for teacher-card span was handled. I should just add the separator CSS. */
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 5px;
+      width: 100%;
+      background: transparent;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      order: 0;
+      border-radius: 0;
+    }
+
+    .separator-line {
+      width: 80%;
+      height: 4px;
+      background-color: var(--primary-color);
+      margin: 60px auto 20px auto;
+      opacity: 0.2;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i> SMK Dzannuroin
+      </a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="akademik.html">Kejuruan (APHP)</a></li>
+        <li><a href="organisasi.html" class="active">Profil & Guru</a></li>
+        <li><a href="ppdb.html">PPDB</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li>
+          <a href="ppdb.html" class="btn btn-primary" style="padding: 8px 20px">Daftar Sekarang</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Struktur Organisasi</h1>
+      <p>Mengenal lebih dekat pimpinan dan pengajar SMK Dzannuroin</p>
+    </div>
+  </header>
+
+  <!-- Org Chart Section -->
+  <section class="section bg-light">
+
+    <div class="org-chart-container">
+
+      <!-- Chart Title -->
+      <div class="chart-title-box">
+        bagan organisasi & setaf
+      </div>
+
+      <div class="chart-tree">
+
+        <!-- ROW 1 -->
+        <div class="level-1">
+          <div class="node-box">
+            <strong>KETUA YAYASAN</strong>
+            <span>MOH. FAISHOL UMAR</span>
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="level-2">
+          <div class="node-box">
+            <strong>KOMITE SEKOLAH</strong>
+            <span>ABD. MU’IS, S.Pd.I</span>
+          </div>
+
+          <div class="ks-wrapper">
+            <div class="node-box">
+              <strong>KEPALA SEKOLAH</strong>
+              <span>NAWARI, S.Pd.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 3 -->
+        <div class="level-3-container">
+
+          <div class="bus-wrapper">
+
+            <!-- Col 1: TU -->
+            <div class="col">
+              <div class="node-box">
+                <strong>Ka. TATA USAHA</strong>
+                <span>MUNIHATUL MUKARROMAH</span>
+              </div>
+            </div>
+
+            <!-- Col 2: BENDAHARA -->
+            <div class="col">
+              <div class="node-box">
+                <strong>BENDAHARA</strong>
+                <span>AS’ADI, S.I.Kom.</span>
+              </div>
+            </div>
+
+            <!-- Col 3: WAKA GROUP + PRODI -->
+            <div class="waka-prodi-group">
+              <!-- Waka Row -->
+              <div class="waka-row">
+                <!-- Waka Stack 1 -->
+                <div class="waka-stack">
+                  <div class="node-box">
+                    <strong>WAKA KURIKULUM</strong>
+                    <span>USWATUN MUTMAINNAH, S.Pd.</span>
+                  </div>
+                  <div class="node-box">
+                    <strong>WAKA HUMAS</strong>
+                    <span>MISRIYAH, S.Pd.</span>
+                  </div>
+                </div>
+                <!-- Waka Stack 2 -->
+                <div class="waka-stack">
+                  <div class="node-box">
+                    <strong>WAKA KESISWAAN</strong>
+                    <span>LUDFI AFANDI, S.TP.</span>
+                  </div>
+                  <div class="node-box">
+                    <strong>WAKA SARPRAS</strong>
+                    <span>MOH. HOLIYANTO, S.Pd.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PRODI (Centered below Wakas) -->
+              <div class="node-box">
+                <strong>Ka. PRODI</strong>
+                <span>ABUYAMIN, S.P</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ROW 4 -->
+        <div class="level-4-container">
+          <!-- Separated Group similar to Left Stack and Right Stack of labs -->
+
+          <div class="col l4-col">
+            <div class="waka-stack">
+              <div class="node-box">
+                <strong>Ka. LAB. TPHP</strong>
+                <span>MOH. HASIM, S.P</span>
+              </div>
+              <div class="node-box">
+                <strong>Ka. PERPUSTAKAAN</strong>
+                <span>ISHLAHEYAH HARRA, S.TP.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col l4-col">
+            <div class="waka-stack">
+              <div class="node-box">
+                <strong>BK/BP</strong>
+                <span>MOH. SHALEH, S.Pd.</span>
+              </div>
+              <div class="node-box">
+                <strong>Ka. LAB KOMPUTER</strong>
+                <span>MUHAMMAD SHALEH</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Separator -->
+      <div class="separator-line"></div>
+
+      <!-- Teacher Directory Section -->
+      <div class="teacher-section-title">
+        Daftar Guru & Staf Pengajar
+      </div>
+
+      <div class="teacher-grid">
+        <!-- 1 -->
+        <div class="teacher-card">
+          <strong>Moh. Shaleh, S.Pd.</strong>
+          <span>Fikih</span>
+        </div>
+        <!-- 2 -->
+        <div class="teacher-card">
+          <strong>Abu Yamin, S.P</strong>
+          <span>Pendidikan Pramuka</span>
+        </div>
+        <!-- 3 -->
+        <div class="teacher-card">
+          <strong>Humaidar R., S.Pd.I.</strong>
+          <span>Bahasa Madura</span>
+        </div>
+        <!-- 4 -->
+        <div class="teacher-card">
+          <strong>Abd. Mu'is, S.Pd.</strong>
+          <span>Bahasa Indonesia</span>
+        </div>
+        <!-- 5 -->
+        <div class="teacher-card">
+          <strong>Shafwan, S.Pd.I.</strong>
+          <span>Pendidikan Agama Islam (PAI)</span>
+        </div>
+        <!-- 6 -->
+        <div class="teacher-card">
+          <strong>Misriyah, S.Pd.</strong>
+          <span>Seni Budaya</span>
+        </div>
+        <!-- 7 -->
+        <div class="teacher-card">
+          <strong>As'adi, S.I.Kom.</strong>
+          <span>Informatika</span>
+        </div>
+        <!-- 8 -->
+        <div class="teacher-card">
+          <strong>Yuni Astutik, S.Pd.</strong>
+          <span>Matematika</span>
+        </div>
+        <!-- 9 -->
+        <div class="teacher-card">
+          <strong>Uswatun M, S.Pd.</strong>
+          <span>Bahasa Inggris</span>
+        </div>
+        <!-- 10 -->
+        <div class="teacher-card">
+          <strong>Iwan Dahri, S.Pd.</strong>
+          <span>Sejarah</span>
+        </div>
+        <!-- 11 -->
+        <div class="teacher-card">
+          <strong>Bunawi, S.Pd</strong>
+          <span>Bahasa Arab</span>
+        </div>
+        <!-- 12 -->
+        <div class="teacher-card">
+          <strong>Suharnanik, S.P</strong>
+          <span>IPAS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SMK Dzannuroin</h3>
+          <p>Membentuk generasi ahli pangan yang inovatif dan mandiri.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section link-section">
+          <h3>Tautan Cepat</h3>
+          <div class="footer-links">
+            <a href="akademik.html">Kompetensi APHP</a>
+            <a href="ppdb.html">Info PPDB</a>
+            <a href="organisasi.html">Guru & Staff</a>
+            <a href="kontak.html">Kontak Kami</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> jl.simpang tiga, sumber
+            gentong ,larangan perreng ,pragaan sumenep jawatimur
+          </p>
+          <p><i class="fas fa-phone"></i> 0823-0124-6533</p>
+          <p><i class="fas fa-envelope"></i> smk_dzannuroin@yahoo.co.id</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 SMK Dzannuroin. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

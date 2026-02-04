@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK DZANNUROIN</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    /* .page-header removed/reset as we use an image tag now */
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      background-color: var(--primary-light);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .container-box {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .container-box::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: var(--white);
+      border: 4px solid var(--secondary-color);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid var(--white);
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent var(--white);
+    }
+
+    .right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid var(--white);
+      border-width: 10px 10px 10px 0;
+      border-color: transparent var(--white) transparent transparent;
+    }
+
+    .right::after {
+      left: -16px;
+    }
+
+    .content {
+      padding: 20px 30px;
+      background-color: var(--white);
+      position: relative;
+      border-radius: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media screen and (max-width: 600px) {
+      .timeline::after {
+        left: 31px;
+      }
+
+      .container-box {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .container-box::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      .left::after,
+      .right::after {
+        left: 15px;
+      }
+
+      .right {
+        left: 0%;
+      }
+    }
+
+
+
+    .usp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .usp-item {
+      padding: 30px;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+
+    .usp-item:hover {
+      background: var(--light-bg);
+      border-color: var(--primary-color);
+    }
+
+    .usp-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i> SMK Dzannuroin
+      </a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="akademik.html">Kejuruan (APHP)</a></li>
+        <li><a href="organisasi.html">Profil & Guru</a></li>
+        <li><a href="ppdb.html" class="active">PPDB</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li>
+          <a href="ppdb.html" class="btn btn-primary" style="padding: 8px 20px">Daftar Sekarang</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Page Header / Hero Image -->
+  <header style="padding: 40px 0; background-color: var(--light-bg);">
+    <div class="container" style="max-width: 98%;">
+      <img src="images/ppdb-banner-2026.png" alt="PPDB Banner"
+        style="width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: var(--shadow-md);">
+    </div>
+  </header>
+
+  <!-- USP Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Mengapa Memilih Kami?</h2>
+      <div class="usp-grid">
+        <div class="usp-item">
+          <div class="usp-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Kerja Sama Industri</h3>
+          <p>Magang dan penyaluran kerja ke perusahan pangan terkemuka.</p>
+        </div>
+        <div class="usp-item">
+          <div class="usp-icon"><i class="fas fa-microscope"></i></div>
+          <h3>Fasilitas Modern</h3>
+          <p>Laboratorium lengkap standar industri ("Mini Plant").</p>
+        </div>
+        <div class="usp-item">
+          <div class="usp-icon"><i class="fas fa-award"></i></div>
+          <h3>Beasiswa Prestasi</h3>
+          <p>
+            Tersedia beasiswa bagi siswa berprestasi akademik & non-akademik.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Flow -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Alur Pendaftaran</h2>
+      <div class="timeline">
+        <div class="container-box left">
+          <div class="content">
+            <h3>1. Pendaftaran Online</h3>
+            <p>
+              Isi formulir pendaftaran melalui website atau datang langsung ke
+              sekolah.
+            </p>
+          </div>
+        </div>
+        <div class="container-box right">
+          <div class="content">
+            <h3>2. Verifikasi Berkas</h3>
+            <p>Serahkan fotokopi rapor, KK, dan Akta Kelahiran ke panitia.</p>
+          </div>
+        </div>
+        <div class="container-box left">
+          <div class="content">
+            <h3>3. Tes & Wawancara</h3>
+            <p>Mengikuti tes potensi akademik dan wawancara peminatan.</p>
+          </div>
+        </div>
+        <div class="container-box right">
+          <div class="content">
+            <h3>4. Pengumuman</h3>
+            <p>
+              Hasil seleksi akan diumumkan melalui website dan papan
+              pengumuman.
+            </p>
+          </div>
+        </div>
+        <div class="container-box left">
+          <div class="content">
+            <h3>5. Daftar Ulang</h3>
+            <p>
+              Siswa yang diterima melakukan daftar ulang dan pengukuran
+              seragam.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: 40px">
+        <a href="#" class="btn btn-primary btn-lg">Isi Formulir Pendaftaran</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SMK Dzannuroin</h3>
+          <p>Membentuk generasi ahli pangan yang inovatif dan mandiri.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section link-section">
+          <h3>Tautan Cepat</h3>
+          <div class="footer-links">
+            <a href="akademik.html">Kompetensi APHP</a>
+            <a href="ppdb.html">Info PPDB</a>
+            <a href="organisasi.html">Guru & Staff</a>
+            <a href="kontak.html">Kontak Kami</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> jl.simpang tiga, sumber gentong ,larangan perreng ,pragaan sumenep
+            jawatimur
+          </p>
+          <p><i class="fas fa-phone"></i> 0823-0124-6533</p>
+          <p><i class="fas fa-envelope"></i> smk_dzannuroin@yahoo.co.id</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 SMK Dzannuroin. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK DZANNUROIN</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i> SMK Dzannuroin
+      </a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="akademik.html" class="active">Kejuruan (APHP)</a></li>
+        <li><a href="organisasi.html">Profil & Guru</a></li>
+        <li><a href="ppdb.html">PPDB</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li>
+          <a href="ppdb.html" class="btn btn-primary" style="padding: 8px 20px">Daftar Sekarang</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Page Header -->
+  <header class="page-header page-header-akademik">
+    <div class="container">
+      <h1 style="color: white;">Agribisnis Pengolahan Hasil Pertanian</h1>
+      <p>Menciptakan Inovasi Pangan Bermutu Tinggi</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <h3>Menu Informasi</h3>
+          <ul>
+            <li><a href="#profil">Profil Kompetensi</a></li>
+            <li><a href="#materi">Materi Pembelajaran</a></li>
+            <li><a href="#produk">Galeri Kegiatan</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+          </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+          <div id="profil" style="margin-bottom: 40px">
+            <h2>Profil Kompetensi Keahlian</h2>
+            <p>
+              Agribisnis Pengolahan Hasil Pertanian (APHP) adalah salah satu
+              kompetensi keahlian di SMK Dzannuroin yang mempelajari
+              penanganan pasca panen, pengolahan, pengemasan, hingga pemasaran
+              produk pertanian. Jurusan ini mencetak tenaga terampil yang
+              mampu mengolah bahan mentah menjadi produk bernilai jual tinggi.
+            </p>
+            <p>
+              <strong>Prospek Kerja:</strong> Quality Control di industri
+              pangan, Wirausaha kuliner, Staff Laboratorium Pangan, Barista,
+              Baker, dan Penyuluh Pertanian.
+            </p>
+          </div>
+
+          <div id="materi" style="margin-bottom: 40px">
+            <h2>Apa Yang Dipelajari?</h2>
+            <ul style="
+                  list-style: none;
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                  gap: 15px;
+                ">
+              <li class="bg-light" style="padding: 15px; border-radius: 5px">
+                <i class="fas fa-check-circle" style="color: var(--primary-color)"></i>
+                Dasar Penanganan Bahan
+              </li>
+              <li class="bg-light" style="padding: 15px; border-radius: 5px">
+                <i class="fas fa-check-circle" style="color: var(--primary-color)"></i>
+                Pengolahan hasil pertanian (Buah & Sayur)
+              </li>
+
+              <li class="bg-light" style="padding: 15px; border-radius: 5px">
+                <i class="fas fa-check-circle" style="color: var(--primary-color)"></i>
+                Produksi Roti & Kue (Bakery)
+              </li>
+
+
+            </ul>
+          </div>
+
+          <div id="produk" style="margin-bottom: 40px">
+            <h2>Galeri Kegiatan</h2>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="images/activity-student-life.jpg" alt="Kebersamaan Siswa" />
+                <div class="gallery-info">
+                  <h4>Kebersamaan Siswa</h4>
+                  <p>Membangun karakter dan kekeluargaan di lingkungan sekolah.</p>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/activity-farming.jpg" alt="Praktek Budidaya" />
+                <div class="gallery-info">
+                  <h4>Praktek Budidaya</h4>
+                  <p>Siswa belajar teknik pertanian secara langsung di lahan praktik.</p>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/activity-cooking.jpg" alt="Pengolahan Pangan" />
+                <div class="gallery-info">
+                  <h4>Produksi Pangan</h4>
+                  <p>Mengolah hasil pertanian menjadi produk kuliner bernilai jual.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="fasilitas">
+            <h2>Fasilitas Laboratorium</h2>
+            <div class="facility-card">
+              <div class="facility-img">
+                <img src="images/lab-facility.webp" alt="Lab Pengolahan" />
+              </div>
+              <div class="facility-text">
+                <h3>Laboratorium Pengolahan</h3>
+                <p>
+                  Dilengkapi dengan peralatan stainless steel standar food
+                  grade, oven industri, mixer planetary, dan alat vacuum
+                  sealer untuk menjamin kualitas produk siswa.
+                </p>
+              </div>
+            </div>
+            <div class="facility-card">
+              <div class="facility-img">
+                <img src="images/lahan_pertanian.jpg" alt="Lahan Pertanian" />
+              </div>
+              <div class="facility-text">
+                <h3>lahan pertanian</h3>
+                <p>
+                  Tempat siswa belajar menganalisis kualitas bahan pangan
+                  secara kimia dan mikrobiologi, memastikan produk aman
+                  dikonsumsi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SMK Dzannuroin</h3>
+          <p>Membentuk generasi ahli pangan yang inovatif dan mandiri.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section link-section">
+          <h3>Tautan Cepat</h3>
+          <div class="footer-links">
+            <a href="akademik.html">Kompetensi APHP</a>
+            <a href="ppdb.html">Info PPDB</a>
+            <a href="organisasi.html">Guru & Staff</a>
+            <a href="kontak.html">Kontak Kami</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> jl.simpang tiga, sumber
+            gentong ,larangan perreng ,pragaan sumenep jawatimur
+          </p>
+          <p><i class="fas fa-phone"></i> 0823-0124-6533</p>
+          <p><i class="fas fa-envelope"></i> smk_dzannuroin@yahoo.co.id</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 SMK Dzannuroin. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

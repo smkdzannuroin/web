@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK DZANNUROIN</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i> SMK Dzannuroin
+      </a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="akademik.html">Kejuruan (APHP)</a></li>
+        <li><a href="organisasi.html">Profil & Guru</a></li>
+        <li><a href="ppdb.html">PPDB</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li>
+          <a href="ppdb.html" class="btn btn-primary" style="padding: 8px 20px">Daftar Sekarang</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1>Mencetak Generasi Unggul Agribisnis</h1>
+      <p>
+        SMK Dzannuroin berdedikasi melahirkan lulusan kompeten di bidang
+        Pengolahan Hasil Pertanian yang siap kerja, wirausaha, dan
+        berintegritas.
+      </p>
+      <div class="hero-buttons">
+        <a href="ppdb.html" class="btn btn-primary">Daftar PPDB</a>
+        <a href="akademik.html" class="btn btn-outline" style="border-color: #fff; color: #fff">Lihat Program
+          Keahlian</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Vision & Mission -->
+  <section class="section">
+    <div class="container">
+      <h2>Visi & Misi</h2>
+      <div class="vision-mission">
+        <div class="vm-box text-center">
+          <div class="vm-icon"><i class="fas fa-eye"></i></div>
+          <h3>Visi</h3>
+          <p>
+            “Terwujudnya lulusan SMK DZANNUROIN yang beriman dan bertakwa,
+            berakhlak mulia, unggul dalam kompetensi kejuruan, serta siap
+            kerja, berwirausaha, dan berdaya saing di dunia industri dan
+            masyarakat global.”
+          </p>
+        </div>
+        <div class="vm-box">
+          <div class="vm-icon text-center">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 class="text-center">Misi</h3>
+          <ul style="list-style-type: disc; padding-left: 20px">
+            <li>
+              Menyelenggarakan pendidikan dan pembelajaran yang
+              mengintegrasikan iman, ilmu, dan keterampilan secara seimbang.
+            </li>
+            <li>
+              Membentuk peserta didik yang berakhlakul karimah, disiplin,
+              bertanggung jawab, dan berkarakter islami.
+            </li>
+            <li>
+              Mengembangkan kompetensi kejuruan sesuai dengan kebutuhan dunia
+              kerja, dunia industri, dan dunia usaha (DUDIKA).
+            </li>
+            <li>
+              Menumbuhkan budaya kerja keras, jujur, kreatif, dan inovatif
+              dalam setiap aktivitas pembelajaran.
+            </li>
+            <li>
+              Meningkatkan kemampuan peserta didik dalam berwirausaha dan
+              kemandirian hidup.
+            </li>
+            <li>
+              Menjalin kerja sama yang kuat dengan industri, dunia usaha, dan
+              masyarakat untuk mendukung link and match pendidikan vokasi.
+            </li>
+            <li>
+              Menciptakan lingkungan sekolah yang aman, religius, nyaman, dan
+              berbudaya mutu.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>84</h3>
+          <p>Siswa Aktif</p>
+        </div>
+        <div class="stat-item">
+          <h3>25+</h3>
+          <p>Mitra Industri</p>
+        </div>
+        <div class="stat-item">
+          <h3>70</h3>
+          <p>Prestasi</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Lulusan Terserap</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SMK Dzannuroin</h3>
+          <p>Membentuk generasi ahli pangan yang inovatif dan mandiri.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section link-section">
+          <h3>Tautan Cepat</h3>
+          <div class="footer-links">
+            <a href="akademik.html">Kompetensi APHP</a>
+            <a href="ppdb.html">Info PPDB</a>
+            <a href="organisasi.html">Guru & Staff</a>
+            <a href="kontak.html">Kontak Kami</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> jl.simpang tiga, sumber
+            gentong ,larangan perreng ,pragaan sumenep jawatimur
+          </p>
+          <p><i class="fas fa-phone"></i> 0823-0124-6533</p>
+          <p><i class="fas fa-envelope"></i> smk_dzannuroin@yahoo.co.id</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 SMK Dzannuroin. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
